@@ -18,10 +18,11 @@ $(function() {
           $("#id_last_4_digits").val(response.card.last4);
           $("#id_stripe_token").val(response.id);
           form.submit();
-          $("button[type=submit]").attr("disabled", "disabled").html("Submitting...");
+          $("button[type=submit]").attr("disabled", "disabled").html("Submitting...");          
         } else {
           $(".payment-errors").html(response.error.message);
           $(".payment-errors").css("display", "block");
+          $('html, body').animate({ scrollTop: 0 }, 0);
           $("#user_submit").attr("disabled", false);
         }
       });
