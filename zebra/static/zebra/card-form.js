@@ -1,6 +1,6 @@
 $(function() {
   $("#id_card_number").parents("form").submit(function() {
-    if ($("#id_card_number").is(":visible")) {
+    if ($("#id_card_number").is(":visible") && ($("#id_card_number").is(":enabled"))) {
       var form = this;
       var card = {
         number: $("#id_card_number").val(),
@@ -10,7 +10,6 @@ $(function() {
         address_line1: $("#id_billing_address_1").val(),
         address_zip: $("#id_billing_zip").val()
       };
-
       Stripe.createToken(card, function(status, response) {
         if (status === 200) {
           // console.log(status, response);
@@ -26,12 +25,11 @@ $(function() {
           $("#user_submit").attr("disabled", false);
         }
       });
-      
       return false;
-      
+    } else {
+      $("#id_last_4_digits").val('0000');
+      $("#id_stripe_token").val('None');
     } 
-    
     return true;
-    
   });
 });
