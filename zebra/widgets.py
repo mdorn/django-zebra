@@ -20,9 +20,9 @@ class NoNameWidget(object):
 
     class Media:
         css = {
-            'all': ('/zebra/card-form.css',)
+            'all': ('/static/zebra/card-form.css',)
         }
-        js = ('/zebra/card-form.js', 'https://js.stripe.com/v1/')
+        js = ('/static/zebra/card-form.js', 'https://js.stripe.com/v1/')
 
 
 
